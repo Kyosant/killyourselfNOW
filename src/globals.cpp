@@ -1,6 +1,7 @@
 #include "lemlib/api.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
+#include "pros/misc.h"
 #include "pros/motors.h"
 #include "pros/motors.hpp"
 #include "pros/screen.hpp"
@@ -25,8 +26,8 @@ pros::MotorGroup rightMotors({frm, brbm, brtm});
 
 
 // other motors
-pros::Motor cata(20, pros::E_MOTOR_GEARSET_18, false);
-pros::Motor intake(14, pros::E_MOTOR_GEARSET_06, true);
+pros::Motor cataMotor(20, pros::E_MOTOR_GEARSET_18, false);
+pros::Motor intakeMotor(14, pros::E_MOTOR_GEARSET_06, true);
 
 //other sensors
 pros::Imu inertial(2); // port 2
@@ -63,50 +64,34 @@ pros::Controller con1 (pros::E_CONTROLLER_MASTER);
 
 
 
-void cataTask();
-bool cata_override = false;
-bool state = true;
 
 
-bool up = true;
-bool down = false;
+// word variables for easier workflow
+bool in = true;
+bool out = false;
 bool yes = true;
 bool no = false;
+int off = 0;
+int idle = 5;
+int intakeout = -600;
+int intakein = 600;
 
+
+// yeah idek
+bool cata_override = false;
+bool cataState = true;
+int intakeState = off;
 int catapos = rotation.get_angle() / 100;
 
-void cata_task_fn() {
-  
-  while (true) {
-    
-   
-    int catapos = rotation.get_angle() / 100;
-
-    if (!abs(catapos >= 31) && (state == false)) {
-      // move catapult down until its reached loading position
-      cata = 127;
-      
-
-    } else if (!cata_override && abs(catapos >= 31) ) {
-      cata = 0;
-      state = true;
-    }
-    
-
-    
-
-    pros::delay(10);
-  }
-}
 
 void fire() {
 
   cata_override = true;
-  cata = 127;
+  cataMotor = 127;
   
   pros::delay(500);
   cata_override = false;
-  state = false;
+  cataState = false;
  
 }
 
@@ -114,7 +99,7 @@ void fire() {
 void lower() {
     
     if (!(rotation.get_angle() >= 3100)) {
-        cata = 127;
+        cataMotor = 127;
     } else {
         
     }
@@ -132,4 +117,55 @@ void blocker(bool state) {
 
   blockerpiss.set_value(state);
     
+}
+
+void intake(int state) {
+    intakeState = state;
+}
+
+
+// task def 
+
+void cata_task_fn() {
+  
+  while (true) {
+    
+   
+    int catapos = rotation.get_angle() / 100;
+
+    if (!abs(catapos >= 31) && (cataState == false)) {
+      // move catapult down until its reached loading position
+      cataMotor = 127;
+      
+
+    } else if (!cata_override && abs(catapos >= 31) ) {
+      cataMotor = 0;
+      cataState = true;
+    }
+    
+
+    
+
+    pros::delay(10);
+  }
+}
+
+void intakeTask(){
+    
+    while (true) {
+        
+        if (con1.get_digital(DIGITAL_L1)) {
+            intake(intakein);
+        }else if (con1.get_digital(DIGITAL_L2)) {
+            intake(intakeout);
+        }else if ((con1.get_digital(DIGITAL_L1)) && (con1.get_digital(DIGITAL_L2))){
+            intake(off);
+        }else{
+            intake(idle);
+        }
+
+        intakeMotor = intakeState;
+    }
+    
+
 }

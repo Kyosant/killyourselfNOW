@@ -31,7 +31,11 @@ void initialize() {
 
     //set catapult task
     pros::Task cata_task(cata_task_fn);
-    state = true;
+    cataState = true;
+
+    //set intake task
+    pros::Task intake_task(intakeTask);
+    intakeState = off;
 
     //calibrate lem chassis
 	chassis.calibrate();

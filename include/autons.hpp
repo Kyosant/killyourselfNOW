@@ -1,9 +1,9 @@
 #pragma once
 #include "autons.hpp"
 
-void wpL();
-void halfwpR();
-void halfwpL();
-void nothing();
+void safeRight();
+void rushRight();
+void safeLeft();
+void rushLeft();
 void skills();
-void fivediskL();
+void nothing();
