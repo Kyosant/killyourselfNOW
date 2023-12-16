@@ -85,6 +85,11 @@ int catapos = rotation.get_angle() / 100;
 
 // static assets
 ASSET(safeRight1_txt);
+ASSET(safeRight2_txt);
+ASSET(safeLeft1_txt);
+ASSET(safeLeft2_txt);
+ASSET(rushLeft1_txt);
+ASSET(rushLeft2_txt);
 
 
 void fire() {

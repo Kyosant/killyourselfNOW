@@ -26,11 +26,42 @@ void rushRight(){
 
 void safeLeft(){
 
+    chassis.setPose(0, 0, 0); // X: 0, Y: 0, Heading: 0
 
+    intake(idle); // intake idle
+
+    chassis.follow(safeLeft1_txt, 15, 2000, true, false); 
+    chassis.waitUntilDone();
+
+    chassis.follow(safeLeft2_txt, 15, 2000, false, true); 
+    chassis.waitUntil(30);
+    wings(out);
+    chassis.waitUntil(45);
+    wings(in);
+    chassis.waitUntilDone();
 }
 
 void rushLeft(){
+    chassis.setPose(0, 0, 0); // X: 0, Y: 0, Heading: 0
 
+    intake(idle); // intake idle
+
+    chassis.follow(rushLeft1_txt, 15, 2000, false, true); 
+    chassis.waitUntil(30);
+    wings(out);
+    chassis.waitUntilDone();
+    wings(in);
+
+    chassis.moveTo(10, 0, 270, 50);
+    chassis.waitUntil(30);
+    intake(intakeout);
+    
+    chassis.follow(rushLeft2_txt, 15, 2000, false, true); 
+    chassis.waitUntil(30);
+    wings(out);
+    chassis.waitUntil(45);
+    wings(in);
+    chassis.waitUntilDone();
 
 }
 

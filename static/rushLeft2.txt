@@ -1,0 +1,68 @@
+-38.073, -12.431, 70.504
+-36.074, -12.448, 66.805
+-34.074, -12.489, 62.888
+-32.075, -12.56, 58.71
+-30.079, -12.671, 54.212
+-28.085, -12.833, 49.305
+-26.099, -13.065, 43.852
+-24.126, -13.39, 37.619
+-22.18, -13.846, 30.123
+-20.313, -14.557, 20
+-18.743, -15.762, 20
+-18.319, -17.644, 20
+-19.184, -19.429, 20
+-20.487, -20.942, 20
+-21.964, -22.289, 60.77
+-23.525, -23.539, 88.186
+-25.142, -24.715, 87.399
+-26.791, -25.847, 86.611
+-28.465, -26.941, 85.823
+-30.158, -28.006, 85.036
+-31.863, -29.051, 84.248
+-33.578, -30.08, 83.461
+-35.301, -31.096, 82.673
+-37.029, -32.103, 81.885
+-38.761, -33.103, 81.098
+-40.495, -34.099, 80.31
+-42.231, -35.093, 79.523
+-43.967, -36.086, 78.735
+-45.702, -37.081, 77.3
+-47.338, -38.219, 73.954
+-48.734, -39.647, 70.44
+-49.868, -41.29, 66.744
+-50.605, -43.143, 62.836
+-50.837, -45.122, 58.669
+-50.551, -47.097, 54.178
+-49.855, -48.968, 49.275
+-48.869, -50.706, 43.824
+-47.683, -52.316, 37.587
+-46.364, -53.819, 30.081
+-44.957, -55.223, 20
+-43.074, -55.896, 24.503
+-41.18, -56.538, 27.583
+-39.272, -57.137, 30.663
+-37.35, -57.692, 33.743
+-35.414, -58.194, 36.823
+-33.463, -58.633, 39.903
+-31.497, -59, 42.983
+-29.518, -59.286, 46.063
+-27.528, -59.487, 49.143
+-25.531, -59.597, 52.223
+-23.532, -59.63, 52.223
+-21.532, -59.6, 52.223
+-19.533, -59.529, 50.94
+-17.535, -59.445, 45.682
+-15.537, -59.37, 39.735
+-13.537, -59.32, 32.724
+-11.537, -59.307, 23.725
+-9.322, -59.342, 0
+-9.322, -59.342, 0
+10.676, -59.662, 0
+endData
+127
+100
+200
+-38.073, -12.431, -0.242, -12.431, -24.265, -24.727, -46.586, -37.589
+-46.586, -37.589, -56.256, -45.203, -46.633, -53.384, -45.072, -55.181
+-45.072, -55.181, -27.102, -61.801, -22.563, -58.964, -9.322, -59.342
+#PATH.JERRYIO-DATA {"appVersion":"0.5.1","format":"LemLib v0.4.x (inch, byte-voltage)","gc":{"robotWidth":12.5,"robotHeight":17.75,"robotIsHolonomic":false,"showRobot":true,"uol":2.54,"pointDensity":2,"controlMagnetDistance":1.968503937007874,"fieldImage":{"displayName":"VRC 2024 - Over Under","signature":"VRC 2024 - Over Under","origin":{"__type":"built-in"}}},"paths":[{"segments":[{"controls":[{"uid":"R0aJuh4dlF","x":-38.07347109163013,"y":-12.431381757461914,"lock":false,"visible":true,"heading":90,"__type":"end-point"},{"uid":"NcVGUf5ppq","x":-0.2421206428720437,"y":-12.431381757461914,"lock":false,"visible":true,"__type":"control"},{"uid":"8dVZnSPaMO","x":-24.26502817783343,"y":-24.726570653308293,"lock":false,"visible":true,"__type":"control"},{"uid":"S4ZUVSQFfm","x":-46.585524942600706,"y":-37.58922980588604,"lock":false,"visible":true,"heading":225,"__type":"end-point"}],"speedProfiles":[],"lookaheadKeyframes":[],"uid":"GQw0MtM727"},{"controls":[{"uid":"S4ZUVSQFfm","x":-46.585524942600706,"y":-37.58922980588604,"lock":false,"visible":true,"heading":225,"__type":"end-point"},{"uid":"KkrNDFUhCg","x":-56.25616390106449,"y":-45.202789083698605,"lock":false,"visible":true,"__type":"control"},{"uid":"WIKZpLXufL","x":-46.63281413066166,"y":-53.383818618242536,"lock":false,"visible":true,"__type":"control"},{"uid":"ZvTPU37SBz","x":-45.07227092465038,"y":-55.18080776455855,"lock":false,"visible":true,"heading":135,"__type":"end-point"}],"speedProfiles":[{"uid":"eQLKWU1jyl","xPos":0.8,"yPos":0.625895125895126,"followBentRate":true}],"lookaheadKeyframes":[],"uid":"CGC0jf3fc4"},{"controls":[{"uid":"ZvTPU37SBz","x":-45.07227092465038,"y":-55.18080776455855,"lock":false,"visible":true,"heading":135,"__type":"end-point"},{"uid":"UrwraKkCvT","x":-27.102379461490287,"y":-61.801294093091215,"lock":false,"visible":true,"__type":"control"},{"uid":"3lNK6abxdR","x":-22.56261740763931,"y":-58.963942809434364,"lock":false,"visible":true,"__type":"control"},{"uid":"M85k6zici3","x":-9.321644750573988,"y":-59.34225631392194,"lock":false,"visible":true,"heading":90,"__type":"end-point"}],"speedProfiles":[{"uid":"0GFhSskM5d","xPos":0,"yPos":0.0562900641025641,"followBentRate":true},{"uid":"Hv59D0xKnt","xPos":0.5,"yPos":0.40279041060291065,"followBentRate":true}],"lookaheadKeyframes":[],"uid":"CZLFhnjNTy"}],"pc":{"speedLimit":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":127,"label":"127"},"step":1,"from":20,"to":100},"bentRateApplicableRange":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":4,"label":"4"},"step":0.01,"from":1.4,"to":1.8},"maxDecelerationRate":127},"name":"Path","uid":"WiaohEpX7x","lock":false,"visible":true}]}
