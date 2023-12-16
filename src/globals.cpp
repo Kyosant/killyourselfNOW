@@ -172,3 +172,13 @@ void intakeTask(){
     
 
 }
+
+void screen(){
+    while (true) {
+        lemlib::Pose pose = chassis.getPose(); // get chassis position
+        pros::lcd::print(0, "X: %f", pose.x);
+        pros::lcd::print(1, "Y: %f", pose.y);
+        pros::lcd::print(2, "Theta: %f", pose.theta);
+        pros::delay(10);
+    }
+}

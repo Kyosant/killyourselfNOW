@@ -36,3 +36,4 @@ extern void blocker(bool state);
 extern void lift(bool state);
 extern void intake(bool state);
 extern pros::Controller con1;
+extern void screen();

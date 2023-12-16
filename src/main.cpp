@@ -4,23 +4,6 @@
 #include "globals.cpp"
 #include "pidconst.cpp"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -39,20 +22,14 @@ void initialize() {
 
     //calibrate lem chassis
 	chassis.calibrate();
+    chassis.setPose(0, 0, 0); // X: 0, Y: 0, Heading: 0
 
 	// print odom values to the brain
     pros::lcd::initialize();
-    pros::Task screenTask([&]() {
-        while (true) {
-            lemlib::Pose pose = chassis.getPose(); // get chassis position
-            pros::lcd::print(0, "X: %f", pose.x);
-            pros::lcd::print(1, "Y: %f", pose.y);
-            pros::lcd::print(2, "Theta: %f", pose.theta);
-            pros::delay(10);
-        }
-    });
+    pros::Task screen_task(screen);
+    
+    
 }
-
 /**
  * Runs while the robot is in the disabled state of Field Management System or
  * the VEX Competition Switch, following either autonomous or opcontrol. When

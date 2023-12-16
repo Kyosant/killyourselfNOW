@@ -10,8 +10,13 @@
 
 void safeRight(){
 
-    intake(intakein);
-    chassis.follow(6ballsafe1_txt, 15, 2000, false);
+    chassis.setPose(0, 0, 0); // X: 0, Y: 0, Heading: 0
+
+    intake(intakein); // intake in
+
+    chassis.moveTo(10, 0, 1000, 50); // move to triball under hang bar and pick it up
+
+    chassis.follow(safeRight1_txt, 15, 2000, false, false); 
 }
 
 void rushRight(){
