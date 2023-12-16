@@ -163,9 +163,10 @@ void intakeTask(){
     while (true) {
        
         intakeMotor = intakeState;
+        pros::delay(10);
     }
     
-    pros::delay(10);
+    
 }
 
 void screen(){
