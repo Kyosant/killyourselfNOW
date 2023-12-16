@@ -87,6 +87,18 @@ void opcontrol() {
 
         // move the robot. T value is X value
         chassis.curvature(leftY, rightX, 0.7);
+        
+        // intake shi
+        if (con1.get_digital(DIGITAL_L1)) {
+            intake(intakein);
+        }else if (con1.get_digital(DIGITAL_L2)) {
+            intake(intakeout);
+        }else if ((con1.get_digital(DIGITAL_L1)) && (con1.get_digital(DIGITAL_L2))){
+            intake(off);
+        }else{
+            intake(idle);
+        }
+
 
         // delay to save resources
         pros::delay(10);

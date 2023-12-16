@@ -161,17 +161,7 @@ void cata_task_fn() {
 void intakeTask(){
 
     while (true) {
-        
-        if (con1.get_digital(DIGITAL_L1)) {
-            intake(intakein);
-        }else if (con1.get_digital(DIGITAL_L2)) {
-            intake(intakeout);
-        }else if ((con1.get_digital(DIGITAL_L1)) && (con1.get_digital(DIGITAL_L2))){
-            intake(off);
-        }else{
-            intake(idle);
-        }
-
+       
         intakeMotor = intakeState;
     }
     
