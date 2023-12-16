@@ -175,7 +175,7 @@ void intakeTask(){
         intakeMotor = intakeState;
     }
     
-
+    pros::delay(10);
 }
 
 void screen(){
