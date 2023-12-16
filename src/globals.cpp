@@ -83,6 +83,9 @@ bool cataState = true;
 int intakeState = off;
 int catapos = rotation.get_angle() / 100;
 
+// static assets
+ASSET(safeRight1_txt);
+
 
 void fire() {
 
@@ -151,7 +154,7 @@ void cata_task_fn() {
 }
 
 void intakeTask(){
-    
+
     while (true) {
         
         if (con1.get_digital(DIGITAL_L1)) {

@@ -4,12 +4,14 @@
 #include "pros/adi.h"
 #include "pros/motors.hpp"
 #include "pros/rtos.hpp"
+#include "lemlib/api.hpp"
+#include "globals.cpp"
 
 
 void safeRight(){
 
-    intake(off);
-
+    intake(intakein);
+    chassis.follow(6ballsafe1_txt, 15, 2000, false);
 }
 
 void rushRight(){
@@ -36,5 +38,5 @@ void nothing(){
 
     // this is it
     // this auto does literally nothing bro whay are you reading this 😭😭😭
-    
+
 }
