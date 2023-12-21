@@ -1,13 +1,16 @@
 #pragma once
+
 #include "main.h"
 #include "pros/adi.hpp"
 #include "pros/motors.hpp"
+#include "lemlib/api.hpp"
 
 
 
 extern pros::Motor cata;
 extern bool cata_override;
-extern bool state;
+extern bool cataState;
+extern int intakeState;
 extern bool in;
 extern bool out;
 extern bool yes;
@@ -22,7 +25,15 @@ extern pros::ADIDigitalOut hangpiss;
 extern pros::ADIDigitalOut wingspiss;
 extern pros::ADIDigitalOut blockerpiss;
 extern pros::Controller con1;
-
+extern lemlib::Chassis chassis;
+extern lemlib::Drivetrain drivetrain;
+extern lemlib::OdomSensors sensors;
+ASSET(safeRight1_txt);
+ASSET(safeRight2_txt);
+ASSET(safeLeft1_txt);
+ASSET(safeLeft2_txt);
+ASSET(rushLeft1_txt);
+ASSET(rushLeft2_txt);
 
 
 
@@ -37,3 +48,4 @@ extern void lift(bool state);
 extern void intake(bool state);
 extern pros::Controller con1;
 extern void screen();
+extern void intake(int state);

@@ -7,3 +7,5 @@ void safeLeft();
 void rushLeft();
 void skills();
 void nothing();
+void tuning1();
+void tuning2();

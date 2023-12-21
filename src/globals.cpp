@@ -5,18 +5,18 @@
 #include "pros/motors.h"
 #include "pros/motors.hpp"
 #include "pros/screen.hpp"
-#include "pidconst.cpp"
+#include "pidconst.h"
 
 
 
 
 // drivetrain motors
-pros::Motor flm(11, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor blbm(12, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor bltm(13, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor frm(18, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor brbm(19, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor brtm(20, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor flm(20, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor blbm(19, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor bltm(18, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor frm(11, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor brbm(12, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor brtm(13, pros::E_MOTOR_GEARSET_06, true); 
 
 // dt motors for constructor
 pros::MotorGroup leftMotors({flm, blbm,bltm});
@@ -26,8 +26,8 @@ pros::MotorGroup rightMotors({frm, brbm, brtm});
 
 
 // other motors
-pros::Motor cataMotor(16, pros::E_MOTOR_GEARSET_18, false);
-pros::Motor intakeMotor(14, pros::E_MOTOR_GEARSET_06, true);
+pros::Motor cataMotor(17, pros::E_MOTOR_GEARSET_36, false);
+pros::Motor intakeMotor(14, pros::E_MOTOR_GEARSET_06, false);
 
 //other sensors
 pros::Imu inertial(2); // port 2
@@ -72,7 +72,7 @@ bool out = false;
 bool yes = true;
 bool no = false;
 int off = 0;
-int idle = 5;
+int idle = 15;
 int intakeout = -600;
 int intakein = 600;
 
@@ -162,8 +162,8 @@ void intakeTask(){
 
     while (true) {
        
-        intakeMotor = intakeState;
-        pros::delay(10);
+      intakeMotor = intakeState;
+      pros::delay(10);
     }
     
     

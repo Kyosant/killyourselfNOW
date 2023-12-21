@@ -5,7 +5,7 @@
 #include "pros/motors.hpp"
 #include "pros/rtos.hpp"
 #include "lemlib/api.hpp"
-#include "globals.cpp"
+
 
 
 void safeRight(){
@@ -76,3 +76,22 @@ void nothing(){
     // this auto does literally nothing bro whay are you reading this 😭😭😭
 
 }
+
+void tuning1(){
+    
+    chassis.setPose(0, 0, 0);
+    chassis.moveTo(10, 0, 0, 2000);
+
+}
+
+
+
+void tuning2(){
+
+    chassis.setPose(0, 0, 0);
+    chassis.turnTo(sqrt(3), 1 , 2000);
+    
+
+}
+
+    

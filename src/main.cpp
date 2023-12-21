@@ -1,8 +1,8 @@
 #include "main.h"
 #include "lemlib/api.hpp"
 #include "autons.hpp"
-#include "globals.cpp"
-#include "pidconst.cpp"
+#include "globals.h"
+
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -59,7 +59,10 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+
+    tuning1();
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -93,10 +96,12 @@ void opcontrol() {
             intake(intakein);
         }else if (con1.get_digital(DIGITAL_L2)) {
             intake(intakeout);
-        }else if ((con1.get_digital(DIGITAL_L1)) && (con1.get_digital(DIGITAL_L2))){
-            intake(off);
         }else{
             intake(idle);
+        }
+
+        if (con1.get_digital(DIGITAL_R1)) {
+            fire();
         }
 
 
