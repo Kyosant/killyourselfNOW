@@ -78,9 +78,12 @@ void nothing(){
 }
 
 void tuning1(){
+
+    intake(idle);
     
     chassis.setPose(0, 0, 0);
-    chassis.moveTo(10, 0, 0, 2000);
+    chassis.moveTo(0, 10, 0, 2000);
+    
 
 }
 

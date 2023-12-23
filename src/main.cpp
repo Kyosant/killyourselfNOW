@@ -13,7 +13,7 @@
 void initialize() {
 
     //set catapult task
-    pros::Task cata_task(cata_task_fn);
+    pros::Task cata_task(cataTask);
     cataState = true;
 
     //set intake task
@@ -84,12 +84,13 @@ void opcontrol() {
     
     // loop forever
     while (true) {
+
         // get left y and right x positions
         int leftY = con1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rightX = con1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
         // move the robot. T value is X value
-        chassis.curvature(leftY, rightX, 0.7);
+        chassis.arcade(leftY, rightX, 0.7);
         
         // intake shi
         if (con1.get_digital(DIGITAL_L1)) {
@@ -101,7 +102,7 @@ void opcontrol() {
         }
 
         if (con1.get_digital(DIGITAL_R1)) {
-            fire();
+            cata(fire);
         }
 
 

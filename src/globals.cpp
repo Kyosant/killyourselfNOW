@@ -30,8 +30,8 @@ pros::Motor cataMotor(17, pros::E_MOTOR_GEARSET_36, false);
 pros::Motor intakeMotor(14, pros::E_MOTOR_GEARSET_06, false);
 
 //other sensors
-pros::Imu inertial(2); // port 2
-pros::Rotation rotation(8);
+pros::Imu inertial(8);
+pros::Rotation rotation(2);
 pros::ADIDigitalIn lim('D');
 
 // dt struct
@@ -75,6 +75,8 @@ int off = 0;
 int idle = 15;
 int intakeout = -600;
 int intakein = 600;
+bool fire = true;
+bool stop = false;
 
 
 // yeah idek
@@ -92,16 +94,21 @@ ASSET(rushLeft1_txt);
 ASSET(rushLeft2_txt);
 
 
-void fire() {
+void cata(bool state){
+  cata_override = state;
+};
+
+
+/*void fire() {
 
   cata_override = true;
   cataMotor = 127;
   
-  pros::delay(500);
+  pros::delay(600);
   cata_override = false;
   cataState = false;
  
-}
+}*/
 
 
 void lower() {
@@ -134,23 +141,36 @@ void intake(int state) {
 
 // task def 
 
-void cata_task_fn() {
+void cataTask() {
   
   while (true) {
     
    
-    int catapos = rotation.get_angle() / 100;
+    int catapos = 32; //rotation.get_angle() / 100;
 
-    if (!abs(catapos >= 31) && (cataState == false)) {
-      // move catapult down until its reached loading position
-      cataMotor = 127;
-      
-
-    } else if (!cata_override && abs(catapos >= 31) ) {
-      cataMotor = 0;
-      cataState = true;
+    if (!cata_override){
+      if (abs(catapos >= 31)) {
+        cataMotor = 0;
+        cataState = true;
+      }
     }
-    
+
+    if (cata_override){
+      
+      if (!abs(catapos >= 31) && (cataState == false)) {
+        // move catapult down until its reached loading position
+        cataMotor = 127;
+        
+      } else if (abs(catapos >= 31)){
+        cata_override = true;
+        cataMotor = 127;
+  
+        pros::delay(600);
+        cata_override = false;
+        cataState = false;
+      }
+
+    }
 
     
 

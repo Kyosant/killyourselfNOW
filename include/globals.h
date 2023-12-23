@@ -7,7 +7,7 @@
 
 
 
-extern pros::Motor cata;
+extern pros::Motor cataMotor;
 extern bool cata_override;
 extern bool cataState;
 extern int intakeState;
@@ -19,6 +19,8 @@ extern int off;
 extern int idle;
 extern int intakeout;
 extern int intakein;
+extern bool fire;
+extern bool stop;
 extern pros::Motor intakeMotor;
 extern pros::Rotation rotation;
 extern pros::ADIDigitalOut hangpiss;
@@ -38,14 +40,15 @@ ASSET(rushLeft2_txt);
 
 
 
-extern void cata_task_fn();
+extern void cataTask();
 extern void intakeTask();
-extern void fire();
+//extern void fire();
 extern void lower();
 extern void wings(bool state);
 extern void blocker(bool state);
 extern void lift(bool state);
 extern void intake(bool state);
+extern void cata(bool state);
 extern pros::Controller con1;
 extern void screen();
 extern void intake(int state);
