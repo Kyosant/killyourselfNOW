@@ -23,9 +23,6 @@ pros::Motor brtm(13, pros::E_MOTOR_GEARSET_06, true);
 pros::MotorGroup leftMotors({flm, blbm,bltm});
 pros::MotorGroup rightMotors({frm, brbm, brtm});
 
-// inertial sensor
-
-
 // other motors
 pros::Motor cataMotor(17, pros::E_MOTOR_GEARSET_36, false);
 pros::Motor intakeMotor(14, pros::E_MOTOR_GEARSET_06, false);
