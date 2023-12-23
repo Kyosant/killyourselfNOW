@@ -90,11 +90,16 @@ void tuning1(){
 
 
 void tuning2(){
+    chassis.arcade(100, 0);
 
     chassis.setPose(0, 0, 0);
-    chassis.turnTo(sqrt(3), 1 , 2000);
+    chassis.turnTo(30, 0 , 2000);
     
 
+}
+
+void tuning3(){
+    chassis.follow(safeLeft1_txt, 15, 4000, false);
 }
 
     

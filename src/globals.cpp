@@ -137,7 +137,7 @@ void cataTask() {
   while (true) {
     
    
-    int catapos = 32; //rotation.get_angle() / 100;
+    int catapos = rotation.get_angle() / 100;
 
     if (!cata_override){
       if (abs(catapos >= 31)) {

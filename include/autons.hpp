@@ -9,3 +9,4 @@ void skills();
 void nothing();
 void tuning1();
 void tuning2();
+void tuning3();

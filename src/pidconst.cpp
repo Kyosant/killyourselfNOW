@@ -4,7 +4,7 @@
 
 
 // forward/backward PID
-lemlib::ControllerSettings linearController(50, // proportional gain (kP)
+lemlib::ControllerSettings linearController(1000, // proportional gain (kP)
                                             30, // derivative gain (kD)
                                             1, // small error range, in inches
                                             100, // small error range timeout, in milliseconds
@@ -14,7 +14,7 @@ lemlib::ControllerSettings linearController(50, // proportional gain (kP)
 );
 
 // turning PID
-lemlib::ControllerSettings angularController(2, // proportional gain (kP)
+lemlib::ControllerSettings angularController(1000, // proportional gain (kP)
                                              10, // derivative gain (kD)
                                              1, // small error range, in degrees
                                              100, // small error range timeout, in milliseconds

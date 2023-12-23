@@ -31,6 +31,8 @@ extern pros::Controller con1;
 extern lemlib::Chassis chassis;
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::OdomSensors sensors;
+
+
 ASSET(safeRight1_txt);
 ASSET(safeRight2_txt);
 ASSET(safeLeft1_txt);
@@ -43,7 +45,6 @@ ASSET(rushLeft2_txt);
 
 extern void cataTask();
 extern void intakeTask();
-//extern void fire();
 extern void lower();
 extern void wings(bool state);
 extern void blocker(bool state);
