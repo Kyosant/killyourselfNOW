@@ -106,6 +106,18 @@ void opcontrol() {
             cata(fire);
         }
 
+        if (con1.get_digital(DIGITAL_R2)) {
+            wings(out);
+        }else {
+            wings(in);
+        }
+
+        if (con1.get_digital(DIGITAL_X)) {
+            lift(up);
+        }else if (con1.get_digital(DIGITAL_B)) {
+            lift(down);
+        }
+
 
         // delay to save resources
         pros::delay(10);

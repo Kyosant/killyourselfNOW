@@ -1,3 +1,4 @@
+#include "globals.h"
 #include "lemlib/api.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
@@ -55,9 +56,11 @@ lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to nullpt
 lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);
 
 // pistons
-pros::ADIDigitalOut wingspiss('A');
-pros::ADIDigitalOut hangpiss('B');
-pros::ADIDigitalOut blockerpiss('C');
+pros::ADIDigitalOut wingleft('A');
+pros::ADIDigitalOut wingright('B');
+pros::ADIDigitalOut hangpiss('C');
+pros::ADIDigitalOut blockerpiss('D');
+pros::ADIDigitalOut liftpiss('E');
 
 // controller
 pros::Controller con1 (pros::E_CONTROLLER_MASTER);
@@ -71,13 +74,16 @@ bool in = true;
 bool out = false;
 bool yes = true;
 bool no = false;
+bool left = true;
+bool right = true;
 int off = 0;
 int idle = 15;
 int intakeout = -600;
 int intakein = 600;
 bool fire = true;
 bool stop = false;
-
+bool up = true;
+bool down = false;
 
 // yeah idek
 bool cata_override = false;
@@ -86,12 +92,12 @@ int intakeState = off;
 int catapos = rotation.get_angle() / 100;
 
 // static assets
-ASSET(safeRight1_txt);
+/*ASSET(safeRight1_txt);
 ASSET(safeRight2_txt);
 ASSET(safeLeft1_txt);
 ASSET(safeLeft2_txt);
 ASSET(rushLeft1_txt);
-ASSET(rushLeft2_txt);
+ASSET(rushLeft2_txt);*/
 
 
 void cata(bool state){
@@ -114,8 +120,17 @@ void lower() {
 
 
 void wings(bool state) {
-
-  wingspiss.set_value(state);
+  if (state == left) {
+    wingleft.set_value(state);
+  }
+  if (state == right) {
+    wingright.set_value(state);
+  }
+  else{
+    wingleft.set_value(state);
+    wingright.set_value(state);
+  }
+ 
     
 }
 
@@ -127,6 +142,10 @@ void blocker(bool state) {
 
 void intake(int state) {
     intakeState = state;
+}
+
+void lift(bool state){
+  liftpiss.set_value(state);
 }
 
 

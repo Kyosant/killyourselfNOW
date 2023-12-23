@@ -14,7 +14,7 @@ void safeRight(){
 
     intake(intakein); // intake in
 
-    chassis.moveTo(10, 0, 1000, 50); // move to triball under hang bar and pick it up
+    chassis.moveTo(10, 0, 90, 50); // move to triball under hang bar and pick it up
 
     chassis.follow(safeRight1_txt, 15, 2000, false, false); 
 }

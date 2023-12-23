@@ -22,6 +22,8 @@ extern int intakeout;
 extern int intakein;
 extern bool fire;
 extern bool stop;
+extern bool up;
+extern bool down;
 extern pros::Motor intakeMotor;
 extern pros::Rotation rotation;
 extern pros::ADIDigitalOut hangpiss;
@@ -51,6 +53,6 @@ extern void blocker(bool state);
 extern void lift(bool state);
 extern void intake(bool state);
 extern void cata(bool state);
-extern pros::Controller con1;
+
 extern void screen();
 extern void intake(int state);
