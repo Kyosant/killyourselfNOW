@@ -2,6 +2,7 @@
 #include "lemlib/api.hpp"
 #include "autons.hpp"
 #include "globals.h"
+#include "pidconst.h"
 
 
 /**

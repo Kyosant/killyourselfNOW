@@ -99,16 +99,7 @@ void cata(bool state){
 };
 
 
-/*void fire() {
 
-  cata_override = true;
-  cataMotor = 127;
-  
-  pros::delay(600);
-  cata_override = false;
-  cataState = false;
- 
-}*/
 
 
 void lower() {
