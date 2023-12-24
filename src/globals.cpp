@@ -6,22 +6,9 @@
 #include "pros/motors.h"
 #include "pros/motors.hpp"
 #include "pros/screen.hpp"
-#include "pidconst.h"
 
 
 
-
-// drivetrain motors
-pros::Motor flm(20, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor blbm(19, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor bltm(18, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor frm(11, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor brbm(12, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor brtm(13, pros::E_MOTOR_GEARSET_06, true); 
-
-// dt motors for constructor
-pros::MotorGroup leftMotors({flm, blbm,bltm});
-pros::MotorGroup rightMotors({frm, brbm, brtm});
 
 // other motors
 pros::Motor cataMotor(17, pros::E_MOTOR_GEARSET_36, false);
@@ -32,7 +19,26 @@ pros::Imu inertial(8);
 pros::Rotation rotation(2);
 pros::ADIDigitalIn lim('D');
 
-// dt struct
+// controller
+pros::Controller controller(pros::E_CONTROLLER_MASTER);
+
+// drive motors
+pros::Motor flm(-20, pros::E_MOTOR_GEARSET_06); 
+pros::Motor blbm(-19, pros::E_MOTOR_GEARSET_06); 
+pros::Motor bltm(18, pros::E_MOTOR_GEARSET_06); 
+pros::Motor frm(11, pros::E_MOTOR_GEARSET_06); 
+pros::Motor brbm(12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor brtm(-13, pros::E_MOTOR_GEARSET_06); 
+
+// motor groups
+pros::MotorGroup leftMotors({flm, blbm, bltm}); // left motor group
+pros::MotorGroup rightMotors({frm, brbm, brtm}); // right motor group
+
+// Inertial Sensor on port 8
+pros::Imu imu(8);
+
+
+// drivetrain settings
 lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
                               &rightMotors, // right motor group
                               10.3125, // 10 inch track width
@@ -41,15 +47,38 @@ lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
                               2 // chase power is 2. If we had traction wheels, it would have been 8
 );
 
-// odometry struct
-lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to nullptr as we don't have one
-                            nullptr, // vertical tracking wheel 2, set to nullptr as we don't have a second one
-                            nullptr, // horizontal tracking wheel 1, set to nullptr as we don't have one
-                            nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
-                            &inertial // inertial sensor
+// lateral motion controller
+lemlib::ControllerSettings linearController(75, // proportional gain (kP)
+                                            0, // integral gain (kI)
+                                            3, // derivative gain (kD)
+                                            3, // anti windup
+                                            1, // small error range, in inches
+                                            100, // small error range timeout, in milliseconds
+                                            3, // large error range, in inches
+                                            500, // large error range timeout, in milliseconds
+                                            20 // maximum acceleration (slew)
 );
 
+// angular motion controller
+lemlib::ControllerSettings angularController(2, // proportional gain (kP)
+                                             0, // integral gain (kI)
+                                             10, // derivative gain (kD)
+                                             3, // anti windup
+                                             1, // small error range, in degrees
+                                             100, // small error range timeout, in milliseconds
+                                             3, // large error range, in degrees
+                                             500, // large error range timeout, in milliseconds
+                                             0 // maximum acceleration (slew)
+);
 
+// sensors for odometry
+// note that in this example we use internal motor encoders (IMEs), so we don't pass vertical tracking wheels
+lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to null
+                            nullptr, // vertical tracking wheel 2, set to nullptr as we are using IMEs
+                            nullptr, // horizontal tracking wheel 1
+                            nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
+                            &imu // inertial sensor
+);
 
 // create the chassis
 lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);

@@ -30,6 +30,8 @@ extern pros::ADIDigitalOut hangpiss;
 extern pros::ADIDigitalOut wingspiss;
 extern pros::ADIDigitalOut blockerpiss;
 extern pros::Controller con1;
+extern lemlib::ControllerSettings linearController;
+extern lemlib::ControllerSettings angularController;
 extern lemlib::Chassis chassis;
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::OdomSensors sensors;
