@@ -4,8 +4,10 @@
 
 
 // forward/backward PID
-lemlib::ControllerSettings linearController(1000, // proportional gain (kP)
+lemlib::ControllerSettings linearController(100, // proportional gain (kP)
+                                            0, //intergal gain (kI)
                                             30, // derivative gain (kD)
+                                            0, //antiWindup
                                             1, // small error range, in inches
                                             100, // small error range timeout, in milliseconds
                                             3, // large error range, in inches
@@ -13,9 +15,13 @@ lemlib::ControllerSettings linearController(1000, // proportional gain (kP)
                                             20 // maximum acceleration (slew)
 );
 
+
+
 // turning PID
-lemlib::ControllerSettings angularController(1000, // proportional gain (kP)
+lemlib::ControllerSettings angularController(10, // proportional gain (kP)
+                                             0, //intergal gain (kI)
                                              10, // derivative gain (kD)
+                                             1, //antiWindup
                                              1, // small error range, in degrees
                                              100, // small error range timeout, in milliseconds
                                              3, // large error range, in degrees

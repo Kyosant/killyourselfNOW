@@ -49,6 +49,8 @@ lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to nullpt
                             &inertial // inertial sensor
 );
 
+
+
 // create the chassis
 lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);
 
@@ -87,14 +89,6 @@ bool cata_override = false;
 bool cataState = true;
 int intakeState = off;
 int catapos = rotation.get_angle() / 100;
-
-// static assets
-/*ASSET(safeRight1_txt);
-ASSET(safeRight2_txt);
-ASSET(safeLeft1_txt);
-ASSET(safeLeft2_txt);
-ASSET(rushLeft1_txt);
-ASSET(rushLeft2_txt);*/
 
 
 void cata(bool state){
@@ -138,7 +132,7 @@ void blocker(bool state) {
 }
 
 void intake(int state) {
-    intakeState = state;
+  intakeState = state;
 }
 
 void lift(bool state){

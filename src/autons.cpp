@@ -14,7 +14,7 @@ void safeRight(){
 
     intake(intakein); // intake in
 
-    chassis.moveTo(10, 0, 90, 50); // move to triball under hang bar and pick it up
+    chassis.moveToPoint(10, 0, 1000, true); // move to triball under hang bar and pick it up
 
     chassis.follow(safeRight1_txt, 15, 2000, false, false); 
 }
@@ -52,7 +52,7 @@ void rushLeft(){
     chassis.waitUntilDone();
     wings(in);
 
-    chassis.moveTo(10, 0, 270, 50);
+    chassis.moveToPoint(10, 0, 1000, true);
     chassis.waitUntil(30);
     intake(intakeout);
     
@@ -79,27 +79,33 @@ void nothing(){
 
 void tuning1(){
 
-    intake(idle);
-    
     chassis.setPose(0, 0, 0);
-    chassis.moveTo(0, 10, 0, 2000);
-    
+    chassis.moveToPoint(0, 10, 1110, true, 127, true);
+    chassis.waitUntilDone();
 
 }
 
 
 
 void tuning2(){
-    chassis.arcade(100, 0);
+
+   
 
     chassis.setPose(0, 0, 0);
-    chassis.turnTo(30, 0 , 2000);
+    chassis.turnTo(30, 0 , 2000, true, 127, true);
     
 
 }
 
 void tuning3(){
-    chassis.follow(safeLeft1_txt, 15, 4000, false);
+    
+    intake(idle);
+    chassis.setPose(-38, -52, 270);
+    chassis.follow(safeLeft1_txt, 15, 4000, true);
+    chassis.waitUntil(10);
+    intake(intakein);
+    chassis.waitUntil(30);
+    intake(intakeout);
 }
 
     
