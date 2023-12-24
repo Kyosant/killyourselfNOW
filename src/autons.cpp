@@ -80,7 +80,7 @@ void nothing(){
 void tuning1(){
 
     chassis.setPose(0, 0, 0);
-    chassis.moveToPoint(0, 10, 1110, true, 127, true);
+    chassis.moveToPoint(24, 24, 1110, true, 127, true);
     chassis.waitUntilDone();
 
 }

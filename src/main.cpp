@@ -62,7 +62,7 @@ void competition_initialize() {}
  */
 void autonomous() {
     
-    tuning1();
+    tuning2();
 }
 
 /**
