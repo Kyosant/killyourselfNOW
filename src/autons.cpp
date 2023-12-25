@@ -80,7 +80,7 @@ void nothing(){
 void tuning1(){
 
     chassis.setPose(0, 0, 0);
-    chassis.moveToPoint(24, 24, 1110, true, 127, true);
+    chassis.moveToPoint(0, 10, 1110, true, 127, true);
     chassis.waitUntilDone();
 
 }
@@ -108,4 +108,22 @@ void tuning3(){
     intake(intakeout);
 }
 
+
+void tuning4(){
+
+    chassis.setPose(12, 12, 0);
+    intake(idle);
+
+    chassis.follow(test1_txt, 5, 4000, true);
+    intake(intakein);
+    chassis.follow(test2_txt, 5, 4000, false);
+    intake(idle);
+    chassis.follow(test3_txt, 4, 4000, false);
+    intake(intakeout);
+    chassis.follow(test4_txt, 5, 4000, true);
+    intake(idle);
+    cata(fire);
+    chassis.moveToPose(12, 12, 0, 1100);
+
+}
     

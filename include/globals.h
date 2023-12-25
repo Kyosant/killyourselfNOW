@@ -1,5 +1,6 @@
 #pragma once
 
+#include "lemlib/asset.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
 #include "pros/motors.hpp"
@@ -43,6 +44,10 @@ ASSET(safeLeft1_txt);
 ASSET(safeLeft2_txt);
 ASSET(rushLeft1_txt);
 ASSET(rushLeft2_txt);
+ASSET(test1_txt);
+ASSET(test2_txt);
+ASSET(test3_txt);
+ASSET(test4_txt);
 
 
 
